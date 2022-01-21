@@ -18,7 +18,7 @@ for item in enumerate(spisok):
 for nomer, znachenie in enumerate(spisok):
     print(nomer, znachenie)
 
-for i in "pidorok":
+for i in "kotik":
     print(i)
 
 e_obj = enumerate(spisok)
