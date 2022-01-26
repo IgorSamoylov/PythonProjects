@@ -19,6 +19,7 @@ def format_notepad(path, file_name):
 
     file_str = re.sub(pattern1, repl, file_str)
     file_str = re.sub(pattern2, repl, file_str)
+    file_str = file_str.replace('­\n', '')
 
     try:
         #with open(path + 'FORMATED/' + file_name[:-4] + '1' + '.txt', "w") as f:
