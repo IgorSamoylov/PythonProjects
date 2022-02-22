@@ -23,15 +23,15 @@ def auth():
     print(login, password)
 
     with open('users.json') as users_file:
-        users = json.load (users_file)
+        users = json.load(users_file)
 
-    if login in users and users [login] == password: #Обратить внимние на login in users - перебор всех users для login
+    if login in users and users[login] == password: #Обратить внимние на login in users - перебор всех users для login
         status_code = 200
         stats['success'] += 1
     else:
         status_code = 401
 
-    return Response (status=status_code)
+    return Response(status=status_code)
 
 if __name__ == '__main__':
     app.run()

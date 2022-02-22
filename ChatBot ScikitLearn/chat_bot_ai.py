@@ -54,12 +54,13 @@ vectorizer = CountVectorizer(encoding='utf-8', lowercase=True,
 X_train = vectorizer.fit_transform(train_texts)
 X_test = vectorizer.transform(test_texts)
 
+
 vocab = vectorizer.get_feature_names_out()
 print(vocab)
 #len(vocab)
 
 #clf = LogisticRegression(solver='saga', penalty='elasticnet', l1_ratio=0)
-clf = RandomForestClassifier(n_estimators=10)
+clf = RandomForestClassifier(n_estimators=100)
 clf.fit(X_train, intents_train)
 
 print("Общий результат:", clf.score(X_train, intents_train),
