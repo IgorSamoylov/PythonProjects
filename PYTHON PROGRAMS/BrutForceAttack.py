@@ -4,7 +4,7 @@ import json
 alphabet = '0123456789abcdefghjklmnoprstquvwxyz'
 base = len(alphabet)
 
-login = 'admin'
+login = 'user'
 
 length = 0
 counter = 0
@@ -25,7 +25,7 @@ while True:
         password = alphabet[0] + password
 
     response = requests.post('http://127.0.0.1:5000/auth',
-                                                   json = {'login' : login, 'password' : password})
+                            json={'login': login, 'password': password})
     #print('Password: ', password)
     
     if response.status_code == 200:

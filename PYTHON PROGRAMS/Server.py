@@ -1,8 +1,13 @@
 import json
-
 from flask import Flask, request, Response
+import logging
+
 
 app = Flask(__name__)
+
+# Загрузка json с парами login-password пользователей сервера
+with open('users.json') as users_file:
+    server_users = json.load(users_file)
 
 stats = {
     'attemps' : 0,
@@ -17,15 +22,13 @@ def hello():
 def auth():
     stats['attemps'] += 1
 
-    data = request.json
-    login = data['login']
-    password = data['password']
-    print(login, password)
+    request_data = request.json
+    login = request_data['login']
+    password = request_data['password']
+    logging.info(login, password)
 
-    with open('users.json') as users_file:
-        users = json.load(users_file)
-
-    if login in users and users[login] == password: #Обратить внимние на login in users - перебор всех users для login
+    #Обратить внимние на login in users - перебор всех users для login
+    if login in server_users and server_users[login] == password: 
         status_code = 200
         stats['success'] += 1
     else:
