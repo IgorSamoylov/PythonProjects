@@ -3,8 +3,8 @@
 import functools
 
 d = [*range(10)]
+print(d)
 
-#result = functools.reduce(lambda x,acc: acc + x, d)
-result = functools.reduce(lambda x,y: x + y, d)
+result = functools.reduce(lambda x,acc: acc + x, d)
 
 print(result)
