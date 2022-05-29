@@ -3,7 +3,7 @@ import os
 
 DIVIDER_LENGTH = 110
 pattern = re.compile(r'\n+=+\n+')
-pattern1 = re.compile(r'\n*={3,}\n+')
+pattern1 = re.compile(r'\n+={3,}\n+')
 pattern2 = re.compile(r'\n{5,}')
 repl = r'\n\n\n\n' + '=' * DIVIDER_LENGTH + r'\n\n\n'
 

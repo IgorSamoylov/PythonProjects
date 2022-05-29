@@ -13,7 +13,7 @@
 inp_file = open("TEST_TEXT.txt", "r", encoding="UTF-8")
 
 uniq_words = set()
-for line in inp_file:     # По умолчанию файловый объект итерируется по строкам!
-    uniq_words.update(line.split()) # Метод update сета позволяет обновить его списком!
+for line in inp_file:     # По умолчанию файловый объект итерируется по строкам
+    uniq_words.update(line.split()) # Метод update сета позволяет обновить его списком
 
 print(len(uniq_words))
