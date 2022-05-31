@@ -33,7 +33,7 @@ class WeightedQuickUnionUF:
         self._count -= 1
 
 
-with open("mediumUF.txt", "r", encoding="UTF-8") as file:
+with open("UnionData/mediumUF.txt", "r", encoding="UTF-8") as file:
     N = int(file.readline())
     wquuf = WeightedQuickUnionUF(N)
     for line in file:
