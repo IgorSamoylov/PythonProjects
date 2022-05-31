@@ -12,7 +12,7 @@ class QuickUnionUF:
     def connected(self, p: int, q: int) -> bool:
         return self.find(p) == self.find(q)
 
-    # Wrong variant of union function
+    # Wrong variant of a union function
     def union_wrong(self, p: int, q: int):
         if self.connected(p, q):
             return
@@ -63,7 +63,7 @@ class QuickUnionUF:
         print(self._id)
 
 
-with open("UnionData/smallUF.txt", "r", encoding="UTF-8") as file:
+with open("UnionData/largestUF.txt", "r", encoding="UTF-8") as file:
     N = int(file.readline())
     quuf = QuickUnionUF(N)
     start = time.time()
