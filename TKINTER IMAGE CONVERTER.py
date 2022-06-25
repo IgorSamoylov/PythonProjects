@@ -23,7 +23,8 @@ def select_file():
         title='Selected File',
         message=filename
     )
-    ImageConverter.convert_file(filename) 
+    if filename:
+        ImageConverter.convert_file(filename) 
 
 
 def select_directory():
@@ -31,7 +32,8 @@ def select_directory():
         title="Open directory",
         initialdir="C:/Users/A12/Downloads/PICTURES"
         )
-    ImageConverter.convert_dir(dir_name, dir_name)
+    if dir_name:
+        ImageConverter.convert_dir(dir_name, dir_name)
     
 
 open_button1 = ttk.Button(root, text="Open a File", command=select_file)

@@ -36,7 +36,7 @@ def assign(vertex: str, root: str):
 
 def main(root: str):
     dfs(root)               
-    while len(visited_stack) > 0:
+    while visited_stack:
         vertex = visited_stack.pop()
         assign(vertex, vertex)
     print(components)
