@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<title>Postgres+Flask</title>
+<body>
+	<textArea id="input"  cols=100 rows=4 style="resize: none; font-size: 18px; background-color: lightblue"></textArea>
+	<button onclick="sendQuery()">Execute</button>
+	<div>
+		<textArea id="output" cols=100 rows=50 style="resize: none; font-size: 18px; color: black; background-color: yellow"></textArea>
+	</div>
+</body>
+
+<script>
+
+const serverUrl = ""; // Тут пусто!
+const input = document.getElementById("input");
+const output = document.getElementById("output");
+
+async function sendQuery() {
+
+	requestObject = {
+            method: "POST",
+            body: input.value,
+            headers: new Headers({'Content-Type': 'application/text'})
+        };
+		
+	 const request = new Request(serverUrl, requestObject);
+
+     await fetch(request)
+            .then(response => response.json())
+            .then(json => {
+				if (json['error'] != "")
+					output.innerHTML  = json['error'];
+				
+					let result_str = "";
+					for (let row of json['data'])
+						result_str += row + '\n';
+					output.innerHTML = result_str;
+				
+				});
+}
+</script>
