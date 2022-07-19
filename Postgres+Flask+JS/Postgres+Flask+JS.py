@@ -2,7 +2,7 @@ import psycopg2
 from flask import Flask, request, render_template
 
 conn = psycopg2.connect(host='localhost', port='5432', user='postgres',
-                               password='password', dbname='demo')
+                               password='password', dbname='postgres')
 conn.autocommit = True
 
 def get_from_db(query):
@@ -13,7 +13,7 @@ def get_from_db(query):
     try:
         cur.execute(query)
         for row in cur:
-            result_list.append(str(row))
+            result_list.append(str(row)[1:-1])
         
     except Exception as e:
         return {'error': str(e)}

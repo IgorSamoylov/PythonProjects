@@ -1,40 +1,53 @@
 <!DOCTYPE html>
+<html>
 <title>Postgres+Flask</title>
+<style type="text/css">
+	textArea {font-family: sans-serif; font-size: 16px; font-style: normal; font-variant: normal; font-weight: 400; 	line-height: 20px; resize: none;  }
+</style>
+
 <body>
-	<textArea id="input"  cols=100 rows=4 style="resize: none; font-size: 18px; background-color: lightblue"></textArea>
-	<button onclick="sendQuery()">Execute</button>
+	<textArea id='input'  cols=100 rows=4 style='background-color: lightblue'></textArea>
+	<button onclick='sendQuery()'>Execute</button>
 	<div>
-		<textArea id="output" cols=100 rows=50 style="resize: none; font-size: 18px; color: black; background-color: yellow"></textArea>
+		<textArea id='output' cols=100 rows=50 style='background-color: yellow'></textArea>
 	</div>
 </body>
+</html>
 
 <script>
 
-const serverUrl = ""; // Тут пусто!
-const input = document.getElementById("input");
-const output = document.getElementById("output");
+const serverUrl = ''; // Тут пусто!
+const input = document.getElementById('input');
+const output = document.getElementById('output');
 
 async function sendQuery() {
 
 	requestObject = {
-            method: "POST",
+            method: 'POST',
             body: input.value,
             headers: new Headers({'Content-Type': 'application/text'})
         };
 		
 	 const request = new Request(serverUrl, requestObject);
 
-     await fetch(request)
+     output.style.backgroundColor='red';
+	 output.innerHTML = 'executing query...';
+	 
+	 await fetch(request)
             .then(response => response.json())
             .then(json => {
-				if (json['error'] != "")
+				if (json['error'] != '')
 					output.innerHTML  = json['error'];
 				
-					let result_str = "";
+					let resultStr = '';
 					for (let row of json['data'])
-						result_str += row + '\n';
-					output.innerHTML = result_str;
-				
+						resultStr += row + '\n';
+						
+					output.style.backgroundColor='yellow';
+					output.innerHTML = resultStr;	
 				});
 }
 </script>
+
+
+
